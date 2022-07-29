@@ -3,73 +3,84 @@
     "maps": [
         {
             "name": "Player",
-            "id": "9b908201-c2e1-42f9-87cd-3bb522b18b8f",
+            "id": "ded16fba-d1dd-46e0-a488-a71153649538",
             "actions": [
                 {
-                    "name": "Move",
-                    "type": "Value",
-                    "id": "8f20a924-6dce-4283-8385-3596232ce4db",
+                    "name": "Movement",
+                    "type": "PassThrough",
+                    "id": "266bae6d-fde3-4599-bbcc-bef9138e2a64",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": true
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
                     "name": "Arrows",
-                    "id": "d54c2142-dad0-48eb-b706-0534dd44d1cf",
-                    "path": "Dpad",
+                    "id": "874eb889-fda8-4f28-98be-216a33fa1330",
+                    "path": "2DVector",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "Movement",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "up",
-                    "id": "c9147693-5b3b-4b6c-9639-13f423d874f7",
+                    "id": "ef68471e-38e6-4430-ad63-a7d0c9f48d97",
                     "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Move",
+                    "groups": "",
+                    "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "down",
-                    "id": "83bbcf69-72e7-47e9-950e-0713553999a1",
+                    "id": "64bc7ab5-9cbe-44c8-80d4-5108b78781db",
                     "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Move",
+                    "groups": "",
+                    "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "left",
-                    "id": "8178ae9a-806f-4cff-b3b0-db0117ada1ee",
+                    "id": "0651a462-d8e5-4a74-a32f-a86c10712d0c",
                     "path": "<Keyboard>/leftArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Move",
+                    "groups": "",
+                    "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "right",
-                    "id": "71721801-9a55-4fe0-bc02-40449659a452",
+                    "id": "890182d6-664c-4125-abe6-165db164f54b",
                     "path": "<Keyboard>/rightArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Move",
+                    "groups": "",
+                    "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "8853d414-4b56-4f28-96d1-f031b547637b",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

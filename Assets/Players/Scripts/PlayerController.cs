@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-    public float moveSpeed = 1f;
+    public float moveSpeed = 4f;
 
     private Vector2 moveInput;
-    private Rigidbody2D rb;
+    [SerializeField] private Rigidbody2D rb;
 
     void Start() {
         rb = GetComponent<Rigidbody2D>();
@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour {
         rb.MovePosition(rb.position + moveInput * moveSpeed * Time.fixedDeltaTime);
     }
 
-    void OnMove(InputValue value) {
-        moveInput = value.Get<Vector2>();
+    public void OnMove(InputAction.CallbackContext context) {
+        moveInput = context.ReadValue<Vector2>();
     }
 }

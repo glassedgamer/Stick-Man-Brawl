@@ -14,15 +14,14 @@ public class PlayerHealth : MonoBehaviour {
         healthBar.SetMaxHealth(maxHealth);
     }
 
-    void OnTriggerEnter2D(Collider2D col) {
-        if(col.tag == "damage")
-            TakeDamage(20);
-    }
-
     public void TakeDamage(int damage) {
         currentHealth -= damage;
+        Debug.Log("Player is dying");
 
         healthBar.SetHealth(currentHealth);
+
+        if(currentHealth <= 0)
+            Destroy(this.gameObject);
     }
 
 }

@@ -13,9 +13,11 @@ public class Enemy : MonoBehaviour {
     private EnemyData data;
 
     private GameObject player1;
+    private GameObject player2;
 
     void Start() {
         player1 = GameObject.FindGameObjectWithTag("Player1");
+        player2 = GameObject.FindGameObjectWithTag("Player2");
         SetEnemyValues();
     }
 
@@ -24,7 +26,11 @@ public class Enemy : MonoBehaviour {
     }
 
     void Swarm() {
-        transform.position = Vector2.MoveTowards(transform.position, player1.transform.position, speed * Time.fixedDeltaTime);
+        if(Vector2.Distance(transform.position, player1.transform.position) < Vector2.Distance(transform.position, player2.transform.position)) {
+            transform.position = Vector2.MoveTowards(transform.position, player1.transform.position, speed * Time.fixedDeltaTime);
+        } else {
+            transform.position = Vector2.MoveTowards(transform.position, player2.transform.position, speed * Time.fixedDeltaTime);
+        }
     }
 
     void SetEnemyValues() {

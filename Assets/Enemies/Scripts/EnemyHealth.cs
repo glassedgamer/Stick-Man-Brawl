@@ -14,4 +14,9 @@ public class EnemyHealth : MonoBehaviour {
         this.health = health;
     }
 
+    public void TakeDamage(int damage) {
+        health -= damage;
+        Debug.Log("Damage dealt!");
+    }
+
 }

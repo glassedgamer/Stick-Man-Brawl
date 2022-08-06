@@ -2,7 +2,7 @@
     "name": "Player2",
     "maps": [
         {
-            "name": "Player",
+            "name": "Player-2",
             "id": "ded16fba-d1dd-46e0-a488-a71153649538",
             "actions": [
                 {
@@ -10,6 +10,15 @@
                     "type": "PassThrough",
                     "id": "266bae6d-fde3-4599-bbcc-bef9138e2a64",
                     "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Attack",
+                    "type": "Button",
+                    "id": "6c664ab1-5272-482b-b8f2-2f5c1958003f",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -79,6 +88,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "35f524a2-c229-4d0b-ba8a-1f7a3fa7076e",
+                    "path": "<Keyboard>/rightCtrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

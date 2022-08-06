@@ -1,5 +1,6 @@
 using UnityEngine.Audio;
 using System;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour {
@@ -29,7 +30,12 @@ public class AudioManager : MonoBehaviour {
     }
 
     void Start() {
-        Play("Fighting Theme");
+        if(SceneManager.GetActiveScene().name == "Main Menu") {
+            Play("Lobby Music");
+        } else if(SceneManager.GetActiveScene().name == "MainLevel") {
+            Stop("Lobby Music");
+            Play("Fighting Theme");
+        }
     }
 
     public void Play(string name) {

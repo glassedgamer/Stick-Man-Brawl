@@ -1188,6 +1188,9 @@ GameObject:
   - component: {fileID: 1284969915}
   - component: {fileID: 1284969914}
   - component: {fileID: 1284969913}
+  - component: {fileID: 1284969918}
+  - component: {fileID: 1284969917}
+  - component: {fileID: 1284969916}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -1255,7 +1258,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 6
   m_Sprite: {fileID: 951034464, guid: 4f3e078f4cf34b3459fffd80bf9b8869, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1275,13 +1278,69 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1284969912}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 2.01, y: -2.41, z: 0}
   m_LocalScale: {x: 0.75251, y: 0.75251, z: 0.75251}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1284969916
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284969912}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.8893537}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3, y: 3}
+    newSize: {x: 3, y: 3}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.2512926}
+  m_EdgeRadius: 0
+--- !u!114 &1284969917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284969912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047ae1c9f4014b5478c9cd59b6a6ff90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+--- !u!114 &1284969918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284969912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47a74739f0c681642a50fb446060e17a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
+  speed: 1.5
+  startTimeBtwAttack: 2
+  data: {fileID: 11400000, guid: 3b51861c45cb1e34eb8feaef51227318, type: 2}
+  animator: {fileID: 1284969913}
 --- !u!1 &1331157242
 GameObject:
   m_ObjectHideFlags: 0
@@ -1354,7 +1413,7 @@ PrefabInstance:
     - target: {fileID: 4014759137752146976, guid: c6d75727386dfb143bddedaf38471d4d, type: 3}
       propertyPath: sounds.Array.data[0].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 531feae39f252a64c80faf479c9726cf, type: 3}
+      objectReference: {fileID: 8300000, guid: b0e26b360328f48dfbaabcf2a8d50d73, type: 3}
     - target: {fileID: 4014759137752146976, guid: c6d75727386dfb143bddedaf38471d4d, type: 3}
       propertyPath: sounds.Array.data[0].loop
       value: 1
@@ -1440,7 +1499,7 @@ GameObject:
   - component: {fileID: 1686982074}
   m_Layer: 0
   m_Name: Player1
-  m_TagString: Untagged
+  m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1816,7 +1875,7 @@ GameObject:
   - component: {fileID: 2032484783}
   m_Layer: 0
   m_Name: Player2
-  m_TagString: Untagged
+  m_TagString: Player2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

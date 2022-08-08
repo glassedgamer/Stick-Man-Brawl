@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour {
 
+    public GameObject blood;
+
     [SerializeField]
     private int health = 100;
 
@@ -15,11 +17,16 @@ public class EnemyHealth : MonoBehaviour {
     }
 
     public void TakeDamage(int damage) {
+        // GetComponent<Enemy>().dazedTime = GetComponent<Enemy>().dazedTime;
+        Instantiate(blood, transform.position, Quaternion.identity);
+
         health -= damage;
         Debug.Log("Damage dealt!");
 
-        if(health <= 0)
+        if(health <= 0) {
+            FindObjectOfType<AudioManager>().Play("Death");
             Destroy(this.gameObject);
+        }
     }
 
 }

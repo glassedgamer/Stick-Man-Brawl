@@ -11,10 +11,17 @@ public class Enemy : MonoBehaviour {
 
     private bool facingRight = true;
 
+    public float dazedTime;
+    public float startDazedTime;
+
     float player1Dist;
     float player2Dist;
     float timeBtwAttack;
     public float startTimeBtwAttack;
+
+    public Transform attackPos;
+    public LayerMask damageable;
+    public float attackRange;
 
     [SerializeField]
     private EnemyData data;
@@ -34,6 +41,13 @@ public class Enemy : MonoBehaviour {
     void Update() {
         player1Dist = Vector2.Distance(transform.position, player1.transform.position);
         player2Dist = Vector2.Distance(transform.position, player2.transform.position);
+
+        if(dazedTime <= 0) {
+            speed = data.speed;
+        } else {
+            speed = 0;
+            dazedTime -= Time.deltaTime;
+        }
 
         Swarm();
     }
@@ -55,6 +69,11 @@ public class Enemy : MonoBehaviour {
             if(timeBtwAttack <= 0) {
                 if(player1Dist <= 3){
                     animator.SetTrigger("Punch");
+                    Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, damageable);
+                    for (int i = 0; i < enemiesToDamage.Length; i++) {
+                        FindObjectOfType<AudioManager>().Play("Punch");
+                        enemiesToDamage[i].GetComponent<PlayerHealth>().TakeDamage(damage);
+                    }  
                 }
                 timeBtwAttack = startTimeBtwAttack;
             } else {
@@ -76,6 +95,11 @@ public class Enemy : MonoBehaviour {
             if(timeBtwAttack <= 0) {
                 if(player2Dist <= 3){
                     animator.SetTrigger("Punch");
+                    Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, damageable);
+                    for (int i = 0; i < enemiesToDamage.Length; i++) {
+                        FindObjectOfType<AudioManager>().Play("Punch");
+                        enemiesToDamage[i].GetComponent<PlayerHealth>().TakeDamage(damage);
+                    }  
                 }
                 timeBtwAttack = startTimeBtwAttack;
             } else {
@@ -94,7 +118,12 @@ public class Enemy : MonoBehaviour {
     void SetEnemyValues() {
         GetComponent<EnemyHealth>().SetHealth(data.hp, data.hp);
         damage = data.damage;
-        speed = data.speed;
+        
+    }
+
+    void OnDrawGizmosSelected() {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(attackPos.position, attackRange);
     }
 
 }

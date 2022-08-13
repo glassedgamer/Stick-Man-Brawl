@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour {
 
     private bool facingRight = true;
 
-    public float dazedTime;
+    private float dazedTime;
     public float startDazedTime;
 
     float player1Dist;
@@ -43,8 +43,10 @@ public class Enemy : MonoBehaviour {
         player2Dist = Vector2.Distance(transform.position, player2.transform.position);
 
         if(dazedTime <= 0) {
+            animator.SetBool("isWalking", true);
             speed = data.speed;
         } else {
+            animator.SetBool("isWalking", false);
             speed = 0;
             dazedTime -= Time.deltaTime;
         }
@@ -52,10 +54,13 @@ public class Enemy : MonoBehaviour {
         Swarm();
     }
 
+    public void Dazed() {
+        dazedTime = startDazedTime;
+    }
+
     void Swarm() {
         if(player1Dist < player2Dist) {
             //moves player and plays walk animation
-            animator.SetBool("isWalking", true);
             transform.position = Vector2.MoveTowards(transform.position, player1.transform.position, speed * Time.fixedDeltaTime);
 
             //flips the enemy

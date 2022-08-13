@@ -17,7 +17,7 @@ public class EnemyHealth : MonoBehaviour {
     }
 
     public void TakeDamage(int damage) {
-        // GetComponent<Enemy>().dazedTime = GetComponent<Enemy>().dazedTime;
+        GetComponent<Enemy>().Dazed();
         Instantiate(blood, transform.position, Quaternion.identity);
 
         health -= damage;

@@ -31,9 +31,13 @@ public class Enemy : MonoBehaviour {
     private GameObject player1;
     private GameObject player2;
 
+    GameObject gameManager;
+
     void Start() {
         player1 = GameObject.FindGameObjectWithTag("Player1");
         player2 = GameObject.FindGameObjectWithTag("Player2");
+
+        gameManager = GameObject.FindWithTag("GameManager");
 
         SetEnemyValues();
     }
@@ -51,6 +55,11 @@ public class Enemy : MonoBehaviour {
             dazedTime -= Time.deltaTime;
         }
 
+        if(player1 == null || player2 == null) {
+            Debug.Log("Game Over");
+            Destroy(this.gameObject);
+        }
+
         Swarm();
     }
 
@@ -60,14 +69,17 @@ public class Enemy : MonoBehaviour {
 
     void Swarm() {
         if(player1Dist < player2Dist) {
-            //moves player and plays walk animation
-            transform.position = Vector2.MoveTowards(transform.position, player1.transform.position, speed * Time.fixedDeltaTime);
 
-            //flips the enemy
-            if(player1.transform.position.x < transform.position.x && facingRight == true) {
-                Flip();
-            } else if(player1.transform.position.x > transform.position.x && facingRight == false) {
-                Flip();
+            if(gameManager.GetComponent<PauseMenu>().isPaused == false) {
+                //moves player and plays walk animation
+                transform.position = Vector2.MoveTowards(transform.position, player1.transform.position, speed * Time.fixedDeltaTime);
+
+                //flips the enemy
+                if(player1.transform.position.x < transform.position.x && facingRight == true) {
+                    Flip();
+                } else if(player1.transform.position.x > transform.position.x && facingRight == false) {
+                    Flip();
+                }
             }
 
             //attacks player
@@ -78,7 +90,7 @@ public class Enemy : MonoBehaviour {
                     for (int i = 0; i < enemiesToDamage.Length; i++) {
                         FindObjectOfType<AudioManager>().Play("Punch");
                         enemiesToDamage[i].GetComponent<PlayerHealth>().TakeDamage(damage);
-                    }  
+                    }
                 }
                 timeBtwAttack = startTimeBtwAttack;
             } else {
@@ -104,7 +116,7 @@ public class Enemy : MonoBehaviour {
                     for (int i = 0; i < enemiesToDamage.Length; i++) {
                         FindObjectOfType<AudioManager>().Play("Punch");
                         enemiesToDamage[i].GetComponent<PlayerHealth>().TakeDamage(damage);
-                    }  
+                    }
                 }
                 timeBtwAttack = startTimeBtwAttack;
             } else {

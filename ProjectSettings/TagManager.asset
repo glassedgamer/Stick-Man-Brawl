@@ -8,6 +8,8 @@ TagManager:
   - Player1
   - Player2
   - enemy
+  - GameManager
+  - LevelChanger
   layers:
   - Default
   - TransparentFX

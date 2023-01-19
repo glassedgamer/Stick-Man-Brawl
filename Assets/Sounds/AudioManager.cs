@@ -29,15 +29,6 @@ public class AudioManager : MonoBehaviour {
         }
     }
 
-    void Start() {
-        if(SceneManager.GetActiveScene().name == "Main Menu") {
-            Play("Lobby Music");
-        } else if(SceneManager.GetActiveScene().name == "MainLevel") {
-            Stop("Lobby Music");
-            Play("Fighting Theme");
-        }
-    }
-
     public void Play(string name) {
         Sound s = Array.Find(sounds, sound => sound.name == name);
         if(s == null) {

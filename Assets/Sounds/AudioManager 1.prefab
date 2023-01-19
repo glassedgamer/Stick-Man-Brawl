@@ -45,26 +45,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: Fighting Theme
+  - name: Fight Music
     clip: {fileID: 8300000, guid: b0e26b360328f48dfbaabcf2a8d50d73, type: 3}
     volume: 0.3
     pitch: 1
     loop: 1
     source: {fileID: 0}
-  - name: Lobby Music
-    clip: {fileID: 8300000, guid: 5d56dc50d23c94d919686674b7ee46fb, type: 3}
-    volume: 0.7
-    pitch: 1
-    loop: 1
-    source: {fileID: 0}
   - name: Punch
     clip: {fileID: 8300000, guid: 6294d10daa9c4dd4bafaf02b87c90861, type: 3}
-    volume: 1
+    volume: 0.7
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Death
     clip: {fileID: 8300000, guid: 55dabfcd5468448a49c270542ddb862e, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Lobby Music
+    clip: {fileID: 8300000, guid: 5d56dc50d23c94d919686674b7ee46fb, type: 3}
     volume: 1
     pitch: 1
     loop: 0

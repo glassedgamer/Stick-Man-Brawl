@@ -152,11 +152,15 @@ MonoBehaviour:
     m_ActionName: P1/Attack[/Keyboard/q]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 143c0ce7-a3c3-4326-9de4-3f276bb5ffb3
-    m_ActionName: P1/Pause[/Keyboard/escape]
+    m_ActionId: 6e9ae548-c108-4c9c-bb28-4f6303b628d3
+    m_ActionName: Menu/Pausing[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: deda76ec-a1be-4125-8a36-0b1241e52288
+    m_ActionName: Menu/Enter[/Keyboard/enter]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
+  m_DefaultActionMap: P1
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!61 &8147262747891571865
@@ -286,7 +290,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   attackRange: 0.22
-  enemyDamage: 20
+  enemyDamage: 60
   playerDamage: 5
 --- !u!114 &8147262747891571870
 MonoBehaviour:

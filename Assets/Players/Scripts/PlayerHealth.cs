@@ -9,7 +9,10 @@ public class PlayerHealth : MonoBehaviour {
 
     public HealthBar healthBar;
 
+    GameObject levelChanger;
+
     void Start() {
+        levelChanger = GameObject.FindWithTag("LevelChanger");
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
     }
@@ -22,7 +25,10 @@ public class PlayerHealth : MonoBehaviour {
 
         if(currentHealth <= 0) {
             FindObjectOfType<AudioManager>().Play("Death");
-            Destroy(this.gameObject);
+            FindObjectOfType<AudioManager>().Stop("Fight Music");
+            levelChanger.GetComponent<LevelChanger>().LoadDedScreen();
+            
+            // Destroy(this.gameObject);
         }
     }
 

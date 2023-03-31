@@ -21,6 +21,10 @@ public class LevelChanger : MonoBehaviour {
         StartCoroutine(LoadLevel(0));
     }
 
+    public void LoadDedScreen() {
+        StartCoroutine(LoadLevel(2));
+    }
+
     public IEnumerator LoadLevel(int levelIndex) {
         anim.SetTrigger("Start");
 

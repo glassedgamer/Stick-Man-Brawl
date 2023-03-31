@@ -6,10 +6,16 @@ public class EnemyHealth : MonoBehaviour {
 
     public GameObject blood;
 
+    private GameObject gameManager;
+
     [SerializeField]
     private int health = 100;
 
     private int maxHealth = 100;
+
+    void Start() {
+        gameManager = GameObject.FindWithTag("GameManager");
+    }
 
     public void SetHealth(int max_health, int health) {
         this.maxHealth = max_health;
@@ -24,6 +30,7 @@ public class EnemyHealth : MonoBehaviour {
         Debug.Log("Damage dealt!");
 
         if(health <= 0) {
+            gameManager.GetComponent<GameManager>().AddPoint(1);
             FindObjectOfType<AudioManager>().Play("Death");
             Destroy(this.gameObject);
         }

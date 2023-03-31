@@ -14,8 +14,6 @@ public class Enemy : MonoBehaviour {
     private float dazedTime;
     public float startDazedTime;
 
-    float player1Dist;
-    float player2Dist;
     float timeBtwAttack;
     public float startTimeBtwAttack;
 
@@ -30,6 +28,9 @@ public class Enemy : MonoBehaviour {
 
     private GameObject player1;
     private GameObject player2;
+
+    float player1Dist;
+    float player2Dist;
 
     GameObject gameManager;
 
@@ -55,12 +56,12 @@ public class Enemy : MonoBehaviour {
             dazedTime -= Time.deltaTime;
         }
 
-        if(player1 == null || player2 == null) {
-            Debug.Log("Game Over");
+        if(player1.GetComponent<PlayerHealth>().currentHealth <= 0 || player2.GetComponent<PlayerHealth>().currentHealth <= 0) {
             Destroy(this.gameObject);
         }
 
         Swarm();
+
     }
 
     public void Dazed() {
@@ -72,7 +73,7 @@ public class Enemy : MonoBehaviour {
 
             if(gameManager.GetComponent<PauseMenu>().isPaused == false) {
                 //moves player and plays walk animation
-                transform.position = Vector2.MoveTowards(transform.position, player1.transform.position, speed * Time.fixedDeltaTime);
+                transform.position = Vector2.MoveTowards(transform.position, player1.transform.position, speed * Time.deltaTime);
 
                 //flips the enemy
                 if(player1.transform.position.x < transform.position.x && facingRight == true) {
@@ -84,7 +85,9 @@ public class Enemy : MonoBehaviour {
 
             //attacks player
             if(timeBtwAttack <= 0) {
-                if(player1Dist <= 3){
+                if(player1Dist <= 6){
+                    speed = 0f;
+                    FindObjectOfType<AudioManager>().Play("Swipe");
                     animator.SetTrigger("Punch");
                     Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, damageable);
                     for (int i = 0; i < enemiesToDamage.Length; i++) {
@@ -94,12 +97,13 @@ public class Enemy : MonoBehaviour {
                 }
                 timeBtwAttack = startTimeBtwAttack;
             } else {
+                speed = data.speed;
                 timeBtwAttack -= Time.deltaTime;
             }
         } else if(player1Dist > player2Dist) {
             //moves player and plays walk animation
             animator.SetBool("isWalking", true);
-            transform.position = Vector2.MoveTowards(transform.position, player2.transform.position, speed * Time.fixedDeltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, player2.transform.position, speed * Time.deltaTime);
 
             //flips the enemy
             if(player2.transform.position.x < transform.position.x && facingRight == true) {
@@ -110,7 +114,9 @@ public class Enemy : MonoBehaviour {
 
             //attacks player
             if(timeBtwAttack <= 0) {
-                if(player2Dist <= 3){
+                if(player2Dist <= 6){
+                    speed = 0f;
+                    FindObjectOfType<AudioManager>().Play("Swipe");
                     animator.SetTrigger("Punch");
                     Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, damageable);
                     for (int i = 0; i < enemiesToDamage.Length; i++) {
@@ -121,6 +127,7 @@ public class Enemy : MonoBehaviour {
                 timeBtwAttack = startTimeBtwAttack;
             } else {
                 timeBtwAttack -= Time.deltaTime;
+                speed = data.speed;
             }
         }
     }
@@ -141,6 +148,14 @@ public class Enemy : MonoBehaviour {
     void OnDrawGizmosSelected() {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(attackPos.position, attackRange);
+    }
+
+    void OnTriggerEnter2D(Collider2D col) {
+        if(col.tag == "Player1" || col.tag == "Player2") {
+            FindObjectOfType<AudioManager>().Play("Punch");
+            col.GetComponent<PlayerHealth>().TakeDamage(damage);
+            Destroy(this.gameObject);
+        }
     }
 
 }

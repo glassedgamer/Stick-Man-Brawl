@@ -125,7 +125,7 @@ public partial class @P2_Controls : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""9017c0dd-64ba-4cd8-8a5d-e2a9f75b058e"",
-                    ""path"": ""<Keyboard>/rightShift"",
+                    ""path"": ""<Keyboard>/rightCtrl"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

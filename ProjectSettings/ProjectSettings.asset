@@ -12,8 +12,8 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: Glassedgamer Games
-  productName: Multiplayer Game Jam
+  companyName: Glassedgamer Studios
+  productName: Stickman Brawl
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -42,8 +42,8 @@ PlayerSettings:
   m_SplashScreenLogos:
   - logo: {fileID: 10404, guid: 0000000000000000e000000000000000, type: 0}
     duration: 3
-  - logo: {fileID: 21300000, guid: 67fdc9b5cf1967743893ff87abe643ba, type: 3}
-    duration: 3
+  - logo: {fileID: 21300000, guid: 6ead827c6b3168c448d10fb5003fe705, type: 3}
+    duration: 2.84
   m_VirtualRealitySplashScreen: {fileID: 0}
   m_HolographicTrackingLossScreen: {fileID: 0}
   defaultScreenWidth: 1920

@@ -67,5 +67,17 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 5d56dc50d23c94d919686674b7ee46fb, type: 3}
     volume: 1
     pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Game Over
+    clip: {fileID: 8300000, guid: ad6fde005858ac340b1230d70246eddb, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Swipe
+    clip: {fileID: 8300000, guid: 0a1dfd2b58e81924a883e4fb6cb13295, type: 3}
+    volume: 1
+    pitch: 1
     loop: 0
     source: {fileID: 0}

@@ -24,6 +24,7 @@ public class PlayerAttack : MonoBehaviour {
 
     public void OnAttack(InputAction.CallbackContext context) {
         if(timeBtwAttack <= 0) {
+            FindObjectOfType<AudioManager>().Play("Swipe");
             animator.SetTrigger("playerPunch");
 
             Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, damageable);

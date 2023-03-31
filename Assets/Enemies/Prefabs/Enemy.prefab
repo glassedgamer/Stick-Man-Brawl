@@ -123,8 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
-  speed: 1.5
-  dazedTime: 0
+  speed: 8
   startDazedTime: 3
   startTimeBtwAttack: 2
   attackPos: {fileID: 8904274044264301110}
